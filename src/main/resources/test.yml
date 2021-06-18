@@ -1,0 +1,32 @@
+test:
+  property1:
+    value1: test1
+    value2: test2
+  property2: test3
+  property3:
+    - "property3-A"
+    - "property3-B"
+    - "property3-C"
+
+ignore: DS_Store, hg
+
+test2: testroot2
+
+filenames:
+  type:
+    - "JSP"
+    - "HTML"
+
+services:
+
+  mysql_p:
+    image: mysql:5
+    container_name: mysql-p
+    volumes:
+      - "${P_ROOT}/data/docker/compose/p-server/mysql/data:/var/lib/mysql"
+      - "${P_ROOT}/data/docker/compose/p-server/mysql/data2:/var/lib/mysql2"
+    environment:
+      - "MYSQL_ROOT_PASSWORD=sviluppo"
+    networks:
+      net_p:
+        ipv4_address: 10.2.0.2
